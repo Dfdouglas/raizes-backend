@@ -1,37 +1,33 @@
 package com.raizes.backend.model;
 
 import jakarta.persistence.*;
+import com.raizes.backend.model.Pedido;
+import com.raizes.backend.model.Produto;
 
-// Essa classe representa os itens dentro de um pedido.
-// Exemplo: um pedido pode ter 2 X-Burgers e 1 Suco.
+// Essa classe representa os itens dentro de um pedido
 @Entity
 @Table(name = "itens_pedido")
 public class ItemPedido {
 
-    // ID único do item do pedido
+    // ID do item
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // Quantidade do produto no pedido
-    // Ex: 2 hambúrgueres, 3 refrigerantes
+    // Quantidade do produto
     private Integer quantidade;
 
     // Relacionamento com Pedido
-    // Muitos itens pertencem a UM pedido
     @ManyToOne
     @JoinColumn(name = "pedido_id")
     private Pedido pedido;
 
     // Relacionamento com Produto
-    // Muitos itens podem ter o MESMO produto
     @ManyToOne
     @JoinColumn(name = "produto_id")
     private Produto produto;
 
-    // =========================
     // GETTERS
-    // =========================
 
     public Long getId() {
         return id;
@@ -49,9 +45,7 @@ public class ItemPedido {
         return produto;
     }
 
-    // =========================
     // SETTERS
-    // =========================
 
     public void setId(Long id) {
         this.id = id;
