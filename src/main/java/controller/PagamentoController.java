@@ -5,8 +5,6 @@ import com.raizes.backend.service.PagamentoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 // Controller responsável pelos endpoints de pagamento
 @RestController
 @RequestMapping("/pagamentos")

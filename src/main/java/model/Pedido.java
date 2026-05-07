@@ -8,23 +8,25 @@ import java.time.LocalDateTime;
 @Table(name = "pedidos")
 public class Pedido {
 
-    // ID do pedido
+    // Identificador único do pedido
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // Data e hora que o pedido foi criado
+    // Data e hora em que o pedido foi criado
     private LocalDateTime dataHora = LocalDateTime.now();
 
-    // Status do pedido: RECEBIDO, PREPARANDO, PRONTO, FINALIZADO ou CANCELADO
+    // Status atual do pedido
+    // Ex: RECEBIDO, PREPARANDO, FINALIZADO, CANCELADO
     @Enumerated(EnumType.STRING)
     private StatusPedido status;
 
-    // Canal de origem do pedido: APP, TOTEM, BALCAO, PICKUP ou WEB
+    // Canal de origem do pedido
+    // Ex: APP, TOTEM, BALCAO, PICKUP, WEB
     @Enumerated(EnumType.STRING)
     private CanalPedido canalPedido;
 
-    // Relacionamento com usuário que fez o pedido
+    // Usuário que realizou o pedido
     @ManyToOne
     @JoinColumn(name = "usuario_id")
     private Usuario usuario;

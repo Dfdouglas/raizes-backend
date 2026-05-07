@@ -1,8 +1,6 @@
 package com.raizes.backend.model;
 
 import jakarta.persistence.*;
-import com.raizes.backend.model.Pedido;
-import com.raizes.backend.model.Produto;
 
 // Essa classe representa os itens dentro de um pedido
 @Entity
