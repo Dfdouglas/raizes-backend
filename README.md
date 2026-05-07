@@ -68,3 +68,4 @@ Os testes podem ser realizados via Swagger:
 
 ```text
 http://localhost:8080/swagger-ui.html
+adendo (Profile test usa H2 em memória. Para testar, acessar /swagger-ui.html e executar os endpoints.)
