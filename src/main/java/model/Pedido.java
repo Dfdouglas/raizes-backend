@@ -19,12 +19,12 @@ public class Pedido {
     // Status atual do pedido
     // Ex: RECEBIDO, PREPARANDO, FINALIZADO, CANCELADO
     @Enumerated(EnumType.STRING)
-    private StatusPedido status;
+    private com.raizes.backend.model.StatusPedido status;
 
     // Canal de origem do pedido
     // Ex: APP, TOTEM, BALCAO, PICKUP, WEB
     @Enumerated(EnumType.STRING)
-    private CanalPedido canalPedido;
+    private com.raizes.backend.model.CanalPedido canalPedido;
 
     // Usuário que realizou o pedido
     @ManyToOne
@@ -41,15 +41,15 @@ public class Pedido {
         return dataHora;
     }
 
-    public StatusPedido getStatus() {
+    public com.raizes.backend.model.StatusPedido getStatus() {
         return status;
     }
 
-    public CanalPedido getCanalPedido() {
+    public com.raizes.backend.model.CanalPedido getCanalPedido() {
         return canalPedido;
     }
 
-    public Usuario getUsuario() {
+    public com.raizes.backend.model.Usuario getUsuario() {
         return usuario;
     }
 
@@ -63,15 +63,15 @@ public class Pedido {
         this.dataHora = dataHora;
     }
 
-    public void setStatus(StatusPedido status) {
+    public void setStatus(com.raizes.backend.model.StatusPedido status) {
         this.status = status;
     }
 
-    public void setCanalPedido(CanalPedido canalPedido) {
+    public void setCanalPedido(com.raizes.backend.model.CanalPedido canalPedido) {
         this.canalPedido = canalPedido;
     }
 
-    public void setUsuario(Usuario usuario) {
+    public void setUsuario(com.raizes.backend.model.Usuario usuario) {
         this.usuario = usuario;
     }
 }

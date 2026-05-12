@@ -13,20 +13,22 @@ public class Produto {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // Nome do produto, exemplo: X-Burger, Suco de Cajá
+    // Nome do produto
     private String nome;
 
-    // Descrição do produto no cardápio
+    // Descrição do produto
     private String descricao;
 
     // Preço do produto
-    // BigDecimal é melhor que Double para valores monetários
     private BigDecimal preco;
 
     // Define se o produto está ativo no cardápio
     private Boolean ativo = true;
 
-    // GETTERS E SETTERS
+    // Quantidade disponível em estoque
+    private Integer quantidadeEstoque;
+
+    // GETTERS
 
     public Long getId() {
         return id;
@@ -48,6 +50,12 @@ public class Produto {
         return ativo;
     }
 
+    public Integer getQuantidadeEstoque() {
+        return quantidadeEstoque;
+    }
+
+    // SETTERS
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -66,5 +74,9 @@ public class Produto {
 
     public void setAtivo(Boolean ativo) {
         this.ativo = ativo;
+    }
+
+    public void setQuantidadeEstoque(Integer quantidadeEstoque) {
+        this.quantidadeEstoque = quantidadeEstoque;
     }
 }

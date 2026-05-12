@@ -1,4 +1,4 @@
-package com.raizes.backend.controller;
+package controller;
 
 import com.raizes.backend.model.ItemPedido;
 import com.raizes.backend.service.ItemPedidoService;

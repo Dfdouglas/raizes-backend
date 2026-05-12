@@ -24,7 +24,7 @@ public class ItemPedidoService {
     @Autowired
     private ProdutoRepository produtoRepository;
 
-    // Criar item com validação
+    // Criar item com validação de pedido, produto e estoque
     public ItemPedido criar(ItemPedido item) {
 
         // Valida se pedido existe
@@ -35,11 +35,32 @@ public class ItemPedidoService {
         Produto produto = produtoRepository.findById(item.getProduto().getId())
                 .orElseThrow(() -> new RuntimeException("Produto não encontrado"));
 
+        // Valida se a quantidade foi informada corretamente
+        if (item.getQuantidade() == null || item.getQuantidade() <= 0) {
+            throw new RuntimeException("Quantidade deve ser maior que zero");
+        }
+
+        // Valida se o produto tem estoque cadastrado
+        if (produto.getQuantidadeEstoque() == null) {
+            throw new RuntimeException("Produto sem estoque cadastrado");
+        }
+
+        // Valida se existe estoque suficiente para atender o pedido
+        if (produto.getQuantidadeEstoque() < item.getQuantidade()) {
+            throw new RuntimeException("Estoque insuficiente");
+        }
+
+        // Baixa o estoque do produto
+        produto.setQuantidadeEstoque(produto.getQuantidadeEstoque() - item.getQuantidade());
+
+        // Salva o produto com o estoque atualizado
+        produtoRepository.save(produto);
+
         // Garante integridade dos dados
         item.setPedido(pedido);
         item.setProduto(produto);
 
-        // Salva no banco
+        // Salva o item no banco
         return itemRepository.save(item);
     }
 
