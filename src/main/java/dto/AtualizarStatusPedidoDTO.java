@@ -1,4 +1,4 @@
-package dto;
+package com.raizes.backend.dto;
 
 import com.raizes.backend.model.StatusPedido;
 
