@@ -1,6 +1,7 @@
 package com.raizes.backend.model;
 
 import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 // Indica que esta classe representa uma tabela no banco de dados
 @Entity
@@ -24,6 +25,7 @@ public class Usuario {
 
     // Senha do usuário
     // Futuramente essa senha deve ser salva com hash, não em texto puro
+    @JsonIgnore
     private String senha;
 
     // Perfil do usuário no sistema

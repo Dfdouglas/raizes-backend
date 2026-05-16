@@ -1,0 +1,59 @@
+{
+  "info": {
+    "_postman_id": "3c9e8735-133e-4e2b-afcc-b4f2a75d1459",
+    "name": "Raizes do Nordeste - Backend",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "54816695",
+    "_collection_link": "https://go.postman.co/collection/54816695-3c9e8735-133e-4e2b-afcc-b4f2a75d1459?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Cadastrar Usuario Admin",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    },
+    {
+      "name": "Login Admin",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    },
+    {
+      "name": "Cadastrar Produto",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    },
+    {
+      "name": "Criar Pedido",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    },
+    {
+      "name": "Criar Item Pedido",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    },
+    {
+      "name": "Aprovar Pagamento",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    }
+  ]
+}

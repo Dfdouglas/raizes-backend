@@ -1,9 +1,7 @@
 package com.raizes.backend.service;
 
-import com.raizes.backend.model.Pagamento;
-import com.raizes.backend.model.Pedido;
-import com.raizes.backend.model.StatusPagamento;
-import com.raizes.backend.model.StatusPedido;
+import com.raizes.backend.model.*;
+import com.raizes.backend.repository.FidelidadeRepository;
 import com.raizes.backend.repository.PagamentoRepository;
 import com.raizes.backend.repository.PedidoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +16,9 @@ public class PagamentoService {
 
     @Autowired
     private PedidoRepository pedidoRepository;
+
+    @Autowired
+    private FidelidadeRepository fidelidadeRepository;
 
     // Simula o pagamento de um pedido
     public Pagamento pagar(Long pedidoId, boolean aprovado) {
@@ -34,9 +35,34 @@ public class PagamentoService {
 
         // Se aprovado, aprova pagamento e finaliza pedido
         if (aprovado) {
+
             pagamento.setStatus(StatusPagamento.APROVADO);
             pedido.setStatus(StatusPedido.FINALIZADO);
+
+            // =========================
+            // FIDELIDADE
+            // =========================
+
+            Usuario usuario = pedido.getUsuario();
+
+            Fidelidade fidelidade = fidelidadeRepository
+                    .findByUsuario(usuario)
+                    .orElseGet(() -> {
+
+                        Fidelidade nova = new Fidelidade();
+                        nova.setUsuario(usuario);
+                        nova.setPontos(0);
+
+                        return nova;
+                    });
+
+            // Soma 10 pontos
+            fidelidade.setPontos(fidelidade.getPontos() + 10);
+
+            fidelidadeRepository.save(fidelidade);
+
         } else {
+
             pagamento.setStatus(StatusPagamento.RECUSADO);
             pedido.setStatus(StatusPedido.CANCELADO);
         }
